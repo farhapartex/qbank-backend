@@ -7,15 +7,16 @@ from rest_framework.routers import DefaultRouter
 from question import views as q_views
 from user import views as u_views
 
-public_router = DefaultRouter()
+router = DefaultRouter()
 
-public_router.register(r"departments", q_views.DepartmentAPIViewSet)
+router.register(r"departments", q_views.DepartmentAPIViewSet)
+router.register(r"courses", q_views.CourseAPIViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r"^api/v1/rest-auth/", include("rest_auth.urls")),
     path("api/v1/user/<username>/", u_views.UserAPIView.as_view()),
-    re_path(r"^api/v1/public/", include(public_router.urls)),
+    re_path(r"^api/v1/route/", include(router.urls)),
 ]
 
 if settings.DEBUG:
