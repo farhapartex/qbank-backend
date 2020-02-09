@@ -12,6 +12,12 @@ class DepartmentSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 class CourseSerializer(serializers.ModelSerializer):
+    department = DepartmentSerializer(read_only=True)
     class Meta:
         model = Course
+        fields = "__all__"
+
+class QuestionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Question
         fields = "__all__"

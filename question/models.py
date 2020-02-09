@@ -30,7 +30,7 @@ class Course(Base):
         return self.code
 
 
-SEMESTER_CHOICE = (('First','1'),('Second','2'))
+SEMESTER_CHOICE = (('1','First'),('2','Second'))
 class Question(Base):
     year = models.CharField(_("Year"), max_length=10)
     department = models.ForeignKey(Department, verbose_name=_("Department"),related_name="dquestions", on_delete=models.CASCADE)

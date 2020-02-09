@@ -11,6 +11,7 @@ router = DefaultRouter()
 
 router.register(r"departments", q_views.DepartmentAPIViewSet)
 router.register(r"courses", q_views.CourseAPIViewSet)
+router.register(r"questions", q_views.QuestionAPIViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
