@@ -45,3 +45,9 @@ class FlatUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ("id","first_name","last_name","username","full_name","email","last_login")
+
+
+class RegistrationUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ("id","first_name","last_name","username","email","password")
