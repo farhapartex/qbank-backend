@@ -49,3 +49,15 @@ class QuestionAPIViewSet(viewsets.ModelViewSet):
     queryset = Question.objects.all()
     serializer_class = QuestionSerializer
     permission_classes = (IsAuthenticated,)
+
+    def get_serializer_class(self):
+        return QuestionDetailSerializer if self.action == "list" else QuestionSerializer
+
+
+class QuestionReadOnlyAPIViewSet(viewsets.ReadOnlyModelViewSet):
+    queryset = Question.objects.all()
+    serializer_class = QuestionSerializer
+    permission_classes = (IsAuthenticated,)
+
+    def get_serializer_class(self):
+        return QuestionDetailSerializer if self.action == "list" else QuestionSerializer
