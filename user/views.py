@@ -17,18 +17,19 @@ class RegistrationAPIViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = RegistrationUserSerializer
 
-# class UserAPIView(generics.ListAPIView):
-#     queryset = User.objects.all()
-#     serializer_class = FlatUserSerializer
+class CheckUserAPIView(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = FlatUserSerializer
 
-#     def get_queryset(self):
-#         username = self.kwargs["username"]
-#         return User.objects.filter(username=username)
+    def get_queryset(self):
+        username = self.kwargs["username"]
+        return User.objects.filter(username=username)
 
 
 class UserAPIView(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
+    permission_classes = (IsAuthenticated,)
 
     def retrieve(self, request:Request, *args, **kwargs):
         logger.critical(kwargs.get('pk'))
