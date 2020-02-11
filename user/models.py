@@ -52,6 +52,7 @@ class User(AbstractUser, Base):
 class Profile(Base):
     user = models.OneToOneField(User, verbose_name=_("User"),related_name='uprofile', on_delete=models.CASCADE)
     department = models.ForeignKey(Department, verbose_name=_("Department"), related_name='profiles', on_delete=models.CASCADE)
+    registration_number = models.CharField(_("Registration Number"), max_length=20, null=True)
     session = models.CharField(_("Seesion"), max_length=50)
 
     def __str__(self):
