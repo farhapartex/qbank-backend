@@ -12,12 +12,12 @@ router = DefaultRouter()
 router.register(r"departments", q_views.DepartmentAPIViewSet)
 router.register(r"courses", q_views.CourseAPIViewSet)
 router.register(r"questions", q_views.QuestionAPIViewSet)
-# router.register(r"questions", q_views.QuestionAPIViewSet)
+router.register(r"users", u_views.UserAPIView)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     re_path(r"^api/v1/rest-auth/", include("rest_auth.urls")),
-    path("api/v1/user/<username>/", u_views.UserAPIView.as_view()),
+    # path("api/v1/user/<username>/", u_views.UserAPIView.as_view()),
     re_path(r"^api/v1/route/", include(router.urls)),
 ]
 

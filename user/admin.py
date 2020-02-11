@@ -5,3 +5,11 @@ from .models import *
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
     pass
+
+@admin.register(Profile)
+class UserAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(Department)
+class DepartmentAdmin(admin.ModelAdmin):
+    pass

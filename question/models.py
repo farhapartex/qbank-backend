@@ -1,18 +1,11 @@
 from django.db import models
 from django.utils.translation import ugettext as _
 from django.conf import settings
-from user.models import Base
+from user.models import *
 # Create your models here.
 
 def image_upload_path(instance, filename):
     return "{0}/{1}".format(instance.course.code, filename)
-
-
-class Department(Base):
-    name = models.CharField(_("Department Name"), max_length=50)
-
-    def __str__(self):
-        return self.name
 
 
 class Course(Base):

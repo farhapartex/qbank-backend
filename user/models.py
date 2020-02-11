@@ -28,6 +28,14 @@ class Base(models.Model):
         abstract = True
 
 
+class Department(Base):
+    name = models.CharField(_("Department Name"), max_length=50)
+
+    def __str__(self):
+        return self.name
+
+
+
 class User(AbstractUser, Base):
     height = models.IntegerField(_("Height"), blank=True, null=True)
     width = models.IntegerField(_("Width"), blank=True, null=True)
@@ -40,3 +48,12 @@ class User(AbstractUser, Base):
         null=True,
         max_length=500,
     )
+
+class Profile(Base):
+    user = models.OneToOneField(User, verbose_name=_("User"),related_name='uprofile', on_delete=models.CASCADE)
+    department = models.ForeignKey(Department, verbose_name=_("Department"), related_name='profiles', on_delete=models.CASCADE)
+    session = models.CharField(_("Seesion"), max_length=50)
+
+    def __str__(self):
+        return self.user.username
+        
