@@ -1,17 +1,11 @@
 from django.db import models
 from django.utils.translation import ugettext as _
 from django.conf import settings
+from user.models import Base
 # Create your models here.
 
 def image_upload_path(instance, filename):
     return "{0}/{1}".format(instance.course.code, filename)
-
-class Base(models.Model):
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-
-    class Meta:
-        abstract = True
 
 
 class Department(Base):
